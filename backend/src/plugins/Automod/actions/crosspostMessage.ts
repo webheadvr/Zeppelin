@@ -9,8 +9,8 @@ export const CrosspostMessageAction = automodAction({
 
     async apply({ pluginData, contexts }) {
         const messages = contexts
-            .filter(c => c.message?.id)
-            .map(c => {
+            .filter((c) => c.message?.id)
+            .map((c) => {
                 const channel = pluginData.guild.channels.cache.get(c.message!.channel_id);
                 if (channel?.type === ChannelTypeStrings.NEWS && channel.isText()) {
                     // .isText() to fix the typings
