@@ -139,14 +139,14 @@ export type TDeepPartial<T> = T extends t.InterfaceType<any>
 // Based on t.PartialC
 export interface TDeepPartialProps<P extends t.Props>
   extends t.PartialType<
-    P,
-    {
-      [K in keyof P]?: TDeepPartial<t.TypeOf<P[K]>>;
-    },
-    {
-      [K in keyof P]?: TDeepPartial<t.OutputOf<P[K]>>;
-    }
-  > {}
+  P,
+  {
+    [K in keyof P]?: TDeepPartial<t.TypeOf<P[K]>>;
+  },
+  {
+    [K in keyof P]?: TDeepPartial<t.OutputOf<P[K]>>;
+  }
+  > { }
 
 export function tDeepPartial<T>(type: T): TDeepPartial<T> {
   if (type instanceof t.InterfaceType || type instanceof t.PartialType) {
@@ -232,16 +232,16 @@ export type Not<T, E> = T & Exclude<T, E>;
 // From https://github.com/gcanti/io-ts/issues/429#issuecomment-655394345
 export interface PartialDictionaryC<D extends t.Mixed, C extends t.Mixed>
   extends t.DictionaryType<
-    D,
-    C,
-    {
-      [K in t.TypeOf<D>]?: t.TypeOf<C>;
-    },
-    {
-      [K in t.OutputOf<D>]?: t.OutputOf<C>;
-    },
-    unknown
-  > {}
+  D,
+  C,
+  {
+    [K in t.TypeOf<D>]?: t.TypeOf<C>;
+  },
+  {
+    [K in t.OutputOf<D>]?: t.OutputOf<C>;
+  },
+  unknown
+  > { }
 
 export const tPartialDictionary = <D extends t.Mixed, C extends t.Mixed>(
   domain: D,
@@ -573,11 +573,11 @@ export function convertMSToDelayString(ms: number): string {
   return result;
 }
 
-export function successMessage(str, emoji = "<:zep_check:650361014180904971>") {
+export function successMessage(str, emoji = "<:zep_check:906897402101891093>") {
   return emoji ? `${emoji} ${str}` : str;
 }
 
-export function errorMessage(str, emoji = "⚠") {
+export function errorMessage(str, emoji = "<:zep_red_x:906897402177417258>") {
   return emoji ? `${emoji} ${str}` : str;
 }
 
